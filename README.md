@@ -2,5 +2,5 @@
 
 Module with class that generates Perlin noise
 
-Originally written in C# language in https://habr.com/ru/articles/265775/
+Originally written in C# language in https://habr.com/ru/articles/265775/\n
 Translated, edited and expanded by Zhassulan1
