@@ -80,7 +80,7 @@ class Perlin:
         # interpolation
         tx = self._Lerp(tx1, tx2, localCordinateX)
         bx = self._Lerp(bx1, bx2, localCordinateX)
-        tb = self._Lerp(tx,  bx,  localCordinateY) # actual result of interpolation
+        tb = self._Lerp(tx,  bx,  localCordinateY) # result
 
         return tb
     
