@@ -7,20 +7,21 @@ class Perlin:
     def __init__(self, w, h):
         self.width = w
         self.height = h
-        self.initialSetSeed = 123456 # it is just to show function do not use it
+        self.table_size = max(w, h) + 1
+        self.initialSetSeed = 123456 # it is just to show function better not use it
         random.seed(self.initialSetSeed)
-        self.permutationTable = [random.randint(0, 255) for i in range(1024)]
+        self.permutationTable = [random.randint(0, 255) for i in range(self.table_size)]
 
 
     def _GetRandGradientVector(self, x, y): # gives gradient vector using prime numbers
-        v = ((x * 1836311903) ^ (y * 2971215073) + 4807526976) & 1023
+        v = ((x * 1836311903) ^ (y * 2971215073) + 4807526976) & (self.table_size-1)
         v = self.permutationTable[v]&3
         vectors = {0 : [1, 0], 1 : [-1, 0], 2 : [0, 1], 3 : [0, -1]}
         return vectors[v]
     
 
     def _NewPermutationTable(self): # gives new permutation table for multiParameterNoise, so that each noise could get new table
-        self.permutationTable = [random.randint(0, 255) for i in range(1024)]
+        self.permutationTable = [random.randint(0, 255) for i in range(self.table_size)]
         
 
     @staticmethod
@@ -121,38 +122,5 @@ class Perlin:
                 for j in range(self.width):
                     noise_values[i][j] += (self.multioctaveNoise(j, i, octaves, persistence, amplitude))
 
-            self._NewPermutationTable() # each new noise can get new table
+            self._NewPermutationTable() # each new noise will get new table
         return noise_values
-
-
-
-
-
-    
-
-
-if __name__ == "__main__":
-    import matplotlib.pyplot as plt
-
-    parameters = [
-        {"octaves" : 24, "persistence" : 0.9, "amplitude" : 1,},
-        {"octaves" : 18, "persistence" : 0.7, "amplitude" : 1,},
-        {"octaves" : 12, "persistence" : 0.5, "amplitude" : 1,},
-        {"octaves" : 10, "persistence" : 0.4, "amplitude" : 1,},
-        {"octaves" :  6, "persistence" : 0.3, "amplitude" : 1,},
-    ]
-
-
-    size_x, size_y = 100, 100 # it will calculate too long better use 100, 100 (1 min : 29 sec for multiParameterNoise)
-
-    # noise_values = Perlin(size_x, size_y).multiParameterNoise(parameters)
-
-    noise = Perlin(size_x, size_y)
-    noise_values = np.zeros((size_y, size_x))
-    for i in range(size_y):
-        for j in range(size_x):
-            noise_values[i][j] = noise.multioctaveNoise(i, j, 6)
-
-    # Plot the noise values
-    plt.imshow(noise_values, cmap='gray', origin = "lower")
-    plt.show()
