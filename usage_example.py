@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from Perlin import Perlin
+from PerlinNoise import Perlin
 
 parameters = [
     {"octaves" : 24, "persistence" : 0.9, "amplitude" : 1,},
@@ -23,5 +23,6 @@ for i in range(size_y):
 
 # Plot the noise values
 plt.imshow(noise_example_1, cmap='gray', origin = "lower")
+plt.show()
 plt.imshow(noise_example_2, cmap='gray', origin = "lower")
 plt.show()

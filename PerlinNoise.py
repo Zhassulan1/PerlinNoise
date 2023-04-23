@@ -7,21 +7,20 @@ class Perlin:
     def __init__(self, w, h):
         self.width = w
         self.height = h
-        self.table_size = max(w, h) + 1
         self.initialSetSeed = 123456 # it is just to show function better not use it
         random.seed(self.initialSetSeed)
-        self.permutationTable = [random.randint(0, 255) for i in range(self.table_size)]
+        self.permutationTable = [random.randint(0, 255) for i in range(1024)]
 
 
     def _GetRandGradientVector(self, x, y): # gives gradient vector using prime numbers
-        v = ((x * 1836311903) ^ (y * 2971215073) + 4807526976) & (self.table_size-1)
+        v = ((x * 1836311903) ^ (y * 2971215073) + 4807526976) & 1023
         v = self.permutationTable[v]&3
         vectors = {0 : [1, 0], 1 : [-1, 0], 2 : [0, 1], 3 : [0, -1]}
         return vectors[v]
     
 
     def _NewPermutationTable(self): # gives new permutation table for multiParameterNoise, so that each noise could get new table
-        self.permutationTable = [random.randint(0, 255) for i in range(self.table_size)]
+        self.permutationTable = [random.randint(0, 255) for i in range(1024)]
         
 
     @staticmethod
