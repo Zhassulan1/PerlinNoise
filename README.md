@@ -11,3 +11,5 @@
 >You may not need folder __"experiments"__ as well, I was trying to improve speed of noise generation using GPU acceleration by module [`numba`](https://numba.pydata.org/)
 >- Unfortunately my graphic card is not supported, so I got only about 20% speed improve
 ---
+
+I [used](https://github.com/Zhassulan1/pp2-22BD030547/tree/main/practice/snake%20-%202) first draft of this module as level generator in snake game (there are also usage in that link).
