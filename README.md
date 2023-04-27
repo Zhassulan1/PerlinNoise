@@ -7,7 +7,7 @@
 - Additional explanation <https://youtu.be/IpNSuHXrP34>
 
 - Translated, edited and expanded by Zhassulan1
-
+<br><br>
 ---
 >You may not need folder __"generated noise images"__, it is just Perlin Noise that made as image using module [`matplotlib`](https://matplotlib.org/)
 >
