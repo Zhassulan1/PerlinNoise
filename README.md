@@ -16,6 +16,3 @@
 >- Unfortunately my graphic card is not supported, so I got only about 20% speed improve
 >
 ---
-I used [first draft of this module](https://github.com/Zhassulan1/pp2-22BD030547/tree/main/practice/snake%20-%202) as level generator in snake game.
-
-(there are also usage in that link, file `"snake-2.py": class Obstacle`).
